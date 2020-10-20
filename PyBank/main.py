@@ -30,7 +30,7 @@ with open(budget_csv, 'r') as csvfile:
   
 
 
-#define function to calculate and print
+#define function to calculate and print 
 def print_analysis (profit_loss):
     
     #calculations
@@ -51,7 +51,7 @@ def print_analysis (profit_loss):
         
     
  
-    #print table
+    #print table in console
     print("              Financial Analysis")
     print("------------------------------------------------")
     print(f' Total Months:                 {total_months}')  
@@ -60,7 +60,19 @@ def print_analysis (profit_loss):
     print(f' Greatest Increase in Profits: {in_date} ${greatest_increase}')
     print(f' Greatest Decrease in Profits: {de_date} ${greatest_decrease}')
 
- 
-   
+
+    
+     #print to text file
+    with open("analysis.txt", "w") as text_file:
+        print("              Financial Analysis", file=text_file)
+        print("------------------------------------------------", file=text_file)
+        print(f' Total Months:                 {total_months}', file=text_file)
+        print(f' Total:                        ${monthly_total}', file=text_file)
+        print(f' Average Change:               ${round(average,2)}', file=text_file)
+        print(f' Greatest Increase in Profits: {in_date} ${greatest_increase}', file=text_file)
+        print(f' Greatest Decrease in Profits: {de_date} ${greatest_decrease}', file=text_file)
+        text_file.close()
+        
+        
 #call function to run analysis and print
 print_analysis(profit_loss)
