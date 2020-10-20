@@ -42,7 +42,6 @@ def print_analysis (profit_loss):
     average = monthly_total/len(profit_loss)
     greatest_increase = max(profit_loss)
     greatest_decrease = min(profit_loss)
-   
     
     #get index of greatest increase and decrease
     #then grab the date with same index number
@@ -61,3 +60,8 @@ def print_analysis (profit_loss):
    
 
 print_analysis(profit_loss)
+   
+   
+
+        
+        
