@@ -5,7 +5,7 @@ os.chdir("C:\\Users\\mike1\\Downloads")
 
 election_csv = "election_data2.csv"
 
-# establish empy dictionary
+# establish empty list
 voting_data= []
 
 
@@ -16,28 +16,21 @@ with open(election_csv, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     
     header = next(csvreader)
-    # loop to add data to voting_data dict    
+    # loop to add data to voting_data list   
     for row in csvreader:
         voting_data.append(row[2])
  
         
 print(voting_data)
         
-# # pulled votes for all candidates into new list        
-# candidate_votes = []
-# for val in voting_data.values(): 
-#     if val in voting_data: 
-#         continue 
-#     else:
-#         candidate_votes.append(val) 
-      
+
 
 #unique list of candidates
 candidates = (set(voting_data))
 print(candidates)
 
 
-
+#Tally of votes per candidates using count function
 Li_votes = voting_data.count('Li')
 Correy_votes = voting_data.count('Correy')
 Khan_votes = voting_data.count('Khan')
@@ -48,6 +41,7 @@ print(Correy_votes)
 print(Khan_votes)
 print(Tooley_votes)
 
+#Tally of votese per candidates using a loop
 Li = 0
 Correy = 0
 Khan = 0
@@ -68,28 +62,7 @@ print(Li)
 print(Correy)
 print(Khan)
 print(Tooley)      
-#print(x)
 
-# i = 1
-# for val in candidates:
-#     if val in candidate_votes:
-#          for val in ccandidate_i = candidate_votes.count(val)
-
-candidate_tally = {}
-for val in candidates:
-    i = 0
-    if val in candidate_votes:
-        counter = i + 1
-    else:
-        candidate_tally.update(val: counter)
-        counter = 0
-else:
-    continue
-        
-        
-        continue
-    
-print(candidate_tally)
     
 #define function to calculate and print 
 def print_election_results ():
