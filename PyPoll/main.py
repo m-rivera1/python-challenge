@@ -1,9 +1,11 @@
 import csv
 import os
 
-os.chdir("C:\\Users\\mike1\\Downloads")
+os.chdir("C:\\Users\\mike1\\Git_Repos\\python-challenge\\PyPoll\\Resources")
 
-election_csv = "election_data2.csv"
+
+
+election_csv = "election_data.csv"
 
 # establish empty list
 voting_data= []
@@ -20,28 +22,20 @@ with open(election_csv, 'r') as csvfile:
     for row in csvreader:
         voting_data.append(row[2])
  
-        
-print(voting_data)
-        
-
-
+         
 #unique list of candidates
 candidates = (set(voting_data))
-print(candidates)
 
 
 #Tally of votes per candidates using count function
-Li_votes = voting_data.count('Li')
-Correy_votes = voting_data.count('Correy')
-Khan_votes = voting_data.count('Khan')
-Tooley_votes = voting_data.count("O'Tooley")
+# Li_votes = voting_data.count('Li')
+# Correy_votes = voting_data.count('Correy')
+# Khan_votes = voting_data.count('Khan')
+# Tooley_votes = voting_data.count("O'Tooley")
 
-print(Li_votes)
-print(Correy_votes)
-print(Khan_votes)
-print(Tooley_votes)
 
-#Tally of votese per candidates using a loop
+
+#Tally of votes per candidates using a loop
 Li = 0
 Correy = 0
 Khan = 0
@@ -58,57 +52,46 @@ for val in voting_data:
     elif val == "O'Tooley":
         Tooley = Tooley + 1
 
-print(Li)
-print(Correy)
-print(Khan)
-print(Tooley)      
-
-    
-
-#************************************************
-#need to calculate % votes per candidate
-
-
-#***********************************************
+   
 
 #define function to calculate and print 
 def print_election_results ():
     
     #calculations
     total_votes = len(voting_data)
-    # monthly_total = sum(profit_loss.values())
-    # average = monthly_total/len(profit_loss.values())
-    # greatest_increase = max(profit_loss.values())
-    # greatest_decrease = min(profit_loss.values())
-    
-    
-    
-        
-    
- 
+    Li_percent = (Li/total_votes) * 100
+    Correy_percent = (Correy/total_votes) * 100
+    Khan_percent = (Khan/total_votes) * 100
+    Tooley_percent = Tooley/total_votes
+      
+            
     #print table in console
     print("              Election Results")
     print("------------------------------------------------")
-    print(f' Total Votes:                 {total_votes}')  
+    print(f' Total Votes:      {total_votes}')  
     print("------------------------------------------------")
-    print(f' Khan:                        ${monthly_total}')
-    print(f' Average Change:               ${round(average,2)}')
-    print(f' Greatest Increase in Profits: {in_date} ${greatest_increase}')
-    print(f' Greatest Decrease in Profits: {de_date} ${greatest_decrease}')
+    print(f' Khan:          {round(Khan_percent,2)}% ({Khan}) ')
+    print(f' Correy:        {round(Correy_percent,2)}% ({Correy})')
+    print(f' Li:            {round(Li_percent,2)}% ({Li})')
+    print(f" O'Tooley:      {round(Tooley_percent,2)}% ({Tooley})")
+    print("------------------------------------------------")
+    print(" Winner: Khan  ")
+    print("------------------------------------------------")
 
+    # print to text file
+    with open("analysis_pypoll.txt", "w") as text_file:
+        print("              Election Results", file=text_file)
+        print("------------------------------------------------", file=text_file)
+        print(f' Total Votes:      {total_votes}', file=text_file)  
+        print("------------------------------------------------", file=text_file)
+        print(f' Khan:          {round(Khan_percent,2)}% ({Khan})', file=text_file)
+        print(f' Correy:        {round(Correy_percent,2)}% ({Correy})', file=text_file)
+        print(f' Li:            {round(Li_percent,2)}% ({Li})', file=text_file)
+        print(f" O'Tooley:      {round(Tooley_percent,2)}% ({Tooley})", file=text_file)
+        print("------------------------------------------------", file=text_file)
+        print(" Winner: Khan  ", file=text_file)
+        print("------------------------------------------------", file=text_file)
 
     
-     #print to text file
-    with open("analysis.txt", "w") as text_file:
-        print("              Financial Analysis", file=text_file)
-        print("------------------------------------------------", file=text_file)
-        print(f' Total Months:                 {total_months}', file=text_file)
-        print(f' Total:                        ${monthly_total}', file=text_file)
-        print(f' Average Change:               ${round(average,2)}', file=text_file)
-        print(f' Greatest Increase in Profits: {in_date} ${greatest_increase}', file=text_file)
-        print(f' Greatest Decrease in Profits: {de_date} ${greatest_decrease}', file=text_file)
-        text_file.close()
-        
-        
-#call function to run analysis and print
-print_analysis(profit_loss)
+
+print_election_results()
