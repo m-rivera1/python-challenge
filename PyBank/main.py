@@ -8,7 +8,8 @@ Created on Mon Oct 19 13:49:04 2020
 import csv
 import os
 
-os.chdir("C:\\Users\\mike1\\Downloads")
+os.chdir("C:\\Users\\mike1\\Git_Repos\\python-challenge\\PyBank\\Resources")
+
 
 budget_csv = "Budget_data.csv"
 
@@ -63,7 +64,7 @@ def print_analysis (profit_loss):
 
     
      #print to text file
-    with open("analysis.txt", "w") as text_file:
+    with open("analysis_pybank.txt", "w") as text_file:
         print("              Financial Analysis", file=text_file)
         print("------------------------------------------------", file=text_file)
         print(f' Total Months:                 {total_months}', file=text_file)
