@@ -64,42 +64,34 @@ print(Khan)
 print(Tooley)      
 
     
+
+#************************************************
+#need to calculate % votes per candidate
+
+
+#***********************************************
+
 #define function to calculate and print 
 def print_election_results ():
     
     #calculations
-    # total_votes = len(voting_data.values())
+    total_votes = len(voting_data)
     # monthly_total = sum(profit_loss.values())
     # average = monthly_total/len(profit_loss.values())
     # greatest_increase = max(profit_loss.values())
     # greatest_decrease = min(profit_loss.values())
     
-    candidate_list = []
-    for val in voting_data.values(): 
-        if val in voting_data: 
-            continue 
-        else:
-           candidate_list.append(val) 
-           
-    print(candidate_list)
-
-
-    #loop to find the corresponding keys for the greatest
-    #increase and decrease
-    for key, value in profit_loss.items():
-        if value == greatest_decrease:
-           de_date = key
-        if value == greatest_increase:
-            in_date = key
+    
     
         
     
  
     #print table in console
-    print("              Financial Analysis")
+    print("              Election Results")
     print("------------------------------------------------")
-    print(f' Total Months:                 {total_months}')  
-    print(f' Total:                        ${monthly_total}')
+    print(f' Total Votes:                 {total_votes}')  
+    print("------------------------------------------------")
+    print(f' Khan:                        ${monthly_total}')
     print(f' Average Change:               ${round(average,2)}')
     print(f' Greatest Increase in Profits: {in_date} ${greatest_increase}')
     print(f' Greatest Decrease in Profits: {de_date} ${greatest_decrease}')
